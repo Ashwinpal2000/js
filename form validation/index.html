@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="myform">
+      <h1>form validation</h1>
+
+      <form
+        action="/backgroundchanger and stickymenu/index.html"
+        onsubmit="return validateForm()"
+      >
+        <input type="text" placeholder="Enter name" id="username" required />
+        <p id="usererror"></p>
+
+        <input
+          type="password"
+          id="fpassword"
+          placeholder="Enter password"
+          required
+        />
+        <p id="passerror"></p>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <script>
+      let username = "";
+      let regex= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      let mypassword = "";
+
+      username = document.getElementById("username");
+      mypassword = document.getElementById("fpassword");
+
+      function validateForm() {
+        let flag = false;
+        console.log(username.value, mypassword.value);
+        if (username.value.length <= 3) {
+          document.getElementById("usererror").innerHTML =
+            "*User name is too Short!";
+        } else {
+          document.getElementById("usererror").innerHTML = "";
+        }
+        if (mypassword.value.length <= 5) {
+          document.getElementById("passerror").innerHTML =
+            "*Password is too Short!";
+        } else {
+          document.getElementById("passerror").innerHTML = "";
+        }
+        if (username.value.length > 3 && mypassword.value.length > 5) {
+          flag = true;
+        }
+        return flag;
+      }
+    </script>
+  </body>
+</html>
